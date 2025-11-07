@@ -23,4 +23,4 @@ Tecnologías utilizadas
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/notes-app-sqlite.git
+   git clone https://github.com/johanrodriguez-ui/NoteApp.git
