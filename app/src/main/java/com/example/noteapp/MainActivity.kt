@@ -1,5 +1,6 @@
 package com.example.noteapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.FABAAgregarNota.setOnClickListener {
-            Toast.makeText(applicationContext, "has presionado FAB", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(applicationContext, AddNoteActivity::class.java))
         }
     }
 }
