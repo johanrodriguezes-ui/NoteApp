@@ -7,19 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper
 class NotasDatebaseHelper (context: Context ) : SQLiteOpenHelper(
     context, DATABASE_NAME, null, DATABASE_VERSION
 ){
-    override fun onCreate(db: SQLiteDatabase?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onUpgrade(
-        db: SQLiteDatabase?,
-        oldVersion: Int,
-        newVersion: Int
-    ) {
-        TODO("Not yet implemented")
-    }
-
-
     companion object{
         private const val DATABASE_NAME = "notas.db"
         private const val DATABASE_VERSION = 1
@@ -28,4 +15,24 @@ class NotasDatebaseHelper (context: Context ) : SQLiteOpenHelper(
         private const val COLUMN_TITULO = "titulo"
         private const val COLUMN_DECRIPCION = "descripcion"
     }
+    override fun onCreate(db: SQLiteDatabase?) {
+        val createTableQuery =
+            "CREATE TABLE $TABLE_NAME (" +
+                    "$COLUMN_ID INTEGER PRIMARY KEY, " +
+                    "$COLUMN_TITULO TEXT, " +
+                    "$COLUMN_DECRIPCION TEXT)"
+        db?.execSQL(createTableQuery)
+    }
+
+    override fun onUpgrade(
+        db: SQLiteDatabase?,
+        oldVersion: Int,
+        newVersion: Int
+    ) {
+        val dropTableQuery =
+            "DROP TABLE IF EXISTS $TABLE_NAME"
+        db?.execSQL(dropTableQuery)
+        onCreate(db)
+    }
+
 }
